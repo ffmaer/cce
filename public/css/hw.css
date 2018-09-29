@@ -1,0 +1,20 @@
+@font-face {
+  font-family: openSans;
+  src: url("/fonts/OpenSans-Regular.ttf");
+}
+body {
+  font-family: openSans;
+  color: #3d003f;
+}
+.quote .smaller {
+  font-size: 0.8em;
+}
+#display .grid {
+  display: inline-block;
+  font-size: 15px;
+  text-align: center;
+}
+#content h1 .char {
+  display: inline-block;
+  text-align: center;
+}
