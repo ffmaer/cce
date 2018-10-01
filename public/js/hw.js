@@ -9,6 +9,34 @@ function rndColor(){
 	return color[Math.floor(Math.random()*color.length)];
 }
 
+
+let p = document.querySelectorAll("p");
+for(let i=0;i<p.length;i++){
+	if(p[i].querySelectorAll("a").length==0){
+		let text = p[i].textContent;
+		p[i].textContent = "";
+		for(let j=0;j<text.length;j++){
+			let span = document.createElement("span");
+			let char = text.charAt(j);
+			span.textContent = char;
+			if(char == "o"){
+				span.style.opacity = 1;
+				span.onmouseover = function(){
+					if(span.style.opacity == 1){
+						for(let k=0;k<100;k++){
+							setTimeout(function(){
+								span.style.opacity -= 0.01;
+							},20*k);	
+						}
+					}
+				}
+			}
+			p[i].append(span);
+		}
+	}
+
+}
+
 let h2 = document.querySelectorAll("h2");
 for(let i=0;i<h2.length;i++){
 	let text = h2[i].textContent;
@@ -44,6 +72,17 @@ content.onclick = function(){
 	this.style["border-color"] = rndColor();
 }
 
+let folds = document.querySelectorAll(".fold");
+for(let i=0;i<folds.length;i++){
+	let fold = folds[i];
+	let ul = fold.querySelector("ul");
+	ul.style.display="none";
+	fold.onclick = function(){
+		ul.style.display="";
+	}
+	let p = fold.querySelector("p");
+	p.innerHTML = `<a href="javascript:void(0);">${p.textContent}</a>`;
+}
 
 let links = document.querySelectorAll("a");
 let wiggle_interval_id;
@@ -66,7 +105,7 @@ for(let i=0;i<links.length;i++){
 			let spans = link.querySelectorAll("span");
 			for(let j=0;j<spans.length;j++){
 				let span = spans[j];
-				span.style["font-size"] = `${Math.floor(Math.random()*4+8)/10}em`;
+				span.style["font-size"] = `${Math.floor(Math.random()*20+10)/10}em`;
 			}
 				
 		},100);
@@ -132,7 +171,7 @@ let body = document.querySelector("body");
 let gif_index = Math.floor(Math.random()*2);
 body.style.background = `url('/gif/g${gif_index}.gif')`;
 
-
+let h1_flash_interval;
 let h1s = document.querySelectorAll("h1");
 for(let i=0;i<h1s.length;i++){
 	let h1 = h1s[i];
@@ -143,10 +182,28 @@ for(let i=0;i<h1s.length;i++){
 		div.textContent = text.charAt(j);
 		div.style.color = "white";
 		div.style.background = rndColor();
+		div.style["font-size"] = "2em";
 		div.classList.add("char");
+		div.onmouseover = function(){
+			clearInterval(h1_flash_interval);
+			h1_flash_interval = setInterval(function(){
+				div.style.background = rndColor();
+				let size = div.style["font-size"].replace(/em/,"");
+				div.style["font-size"]=`${Number.parseFloat(size)+0.01}em`;
+			},20);
+		}
+		div.onmouseout = function(){
+			clearInterval(h1_flash_interval)
+		}
 		h1.append(div);
 	}
 }
+
+
+
+
+
+
 
 
 
