@@ -38,8 +38,14 @@ app.get('/syllabus', function(req, res){
   res.render('syllabus');
 });
 
-app.get('/hw1', function(req, res){
-  res.render('hw1');
+app.get(/hw\d+$/, function(req, res){
+
+	let hwid = Number.parseInt(req.originalUrl.match(/\d+/)[0]);
+	if(fs.existsSync(__dirname + `/views/hw${hwid}.pug`) && hwid<3){
+		res.render(`hw${hwid}`,{hwid:hwid});	
+	}else{
+		res.send("hw not found");
+	}
 });
 
 app.get('/words300', function(req, res){
