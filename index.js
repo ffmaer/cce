@@ -41,7 +41,7 @@ app.get('/syllabus', function(req, res){
 app.get(/hw\d+$/, function(req, res){
 
 	let hwid = Number.parseInt(req.originalUrl.match(/\d+/)[0]);
-	if(fs.existsSync(__dirname + `/views/hw${hwid}.pug`) && hwid<3){
+	if(fs.existsSync(__dirname + `/views/hw${hwid}.pug`) && hwid<4){
 		res.render(`hw${hwid}`,{hwid:hwid});	
 	}else{
 		res.send("hw not found");
