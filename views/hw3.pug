@@ -1,6 +1,7 @@
 extends hwlayout.pug
 block content
-	h2 Sliders and buttons
+	h2 Exercise 1: Adjustable Effects
+	h3 Sliders and buttons
 	p Integrate sliders and buttons from 
 		a(href="https://p5js.org/reference/#/libraries/p5.dom" target="_blank") p5.dom library
 		|  to enable adjustable effects as in these examples: 
@@ -13,12 +14,21 @@ block content
 	p createButton(), mousePressed()
 	p position(), style()
 
-	h2 Make a game
-	p use p5.play library
-	p use the following functions:
+	h2 Exercise 2: Interaction
+	h3 Keyboard
+	p Use p5.play library. Here is  
+		a(href="/p5/play" target="_blank") an example.
+	p Use the following functions:
 	p createSprite()
-	p draw
+	p somesprite.draw = function(){};
+	p keydown()
 	p position.x, position.y
 	p overlap(), collide(), displace()
 	p random()
-	h2 Image
+	h2 Exercise 3: Image
+	p Use p5.js image functions. Link to 
+		a(href="/p5/image" target="_blank") an example.
+	p Use the following functions:
+	p loadImage()
+	p image(), tint(), blend(), filter()
+	p get(), set(), updatePixels()

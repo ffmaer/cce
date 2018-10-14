@@ -10,33 +10,27 @@ function rndColor(){
 }
 
 
-let p = document.querySelectorAll("p");
-for(let i=0;i<p.length;i++){
-	if(p[i].querySelectorAll("a").length==0){
-		let text = p[i].textContent;
-		p[i].textContent = "";
-		for(let j=0;j<text.length;j++){
-			let span = document.createElement("span");
-			let char = text.charAt(j);
-			span.textContent = char;
-			if(char == "o"){
-				span.style.opacity = 1;
-				span.onmouseover = function(){
-					if(span.style.opacity == 1){
-						for(let k=0;k<100;k++){
-							setTimeout(function(){
-								span.style.opacity -= 0.01;
-							},20*k);	
-						}
-					}
-				}
-			}
-			p[i].append(span);
-		}
-	}
+// let p = document.querySelectorAll("p");
+// for(let i=0;i<p.length;i++){
+// 	if(p[i].querySelectorAll("a").length==0){
+// 		let text = p[i].textContent;
+// 		p[i].textContent = "";
+// 		for(let j=0;j<text.length;j++){
+// 			let span = document.createElement("span");
+// 			let char = text.charAt(j);
+// 			span.textContent = char;
+// 			if(char == "o"){
+// 				span.style.opacity = 1;
+// 				span.onmouseover = function(){
+// 					span.innerHTML = "◍";
+// 				}
+// 			}
+// 			p[i].append(span);
+// 		}
+// 	}
+// }
 
-}
-
+let fade_interval;
 let h2 = document.querySelectorAll("h2");
 for(let i=0;i<h2.length;i++){
 	let text = h2[i].textContent;
@@ -49,13 +43,17 @@ for(let i=0;i<h2.length;i++){
 		if(char == "e"){
 			span.style.opacity = 1;
 			span.onmouseover = function(){
-				if(span.style.opacity == 1){
-					for(let k=0;k<100;k++){
-						setTimeout(function(){
-							span.style.opacity -= 0.01;
-						},20*k);	
+				clearInterval(fade_interval);
+				fade_interval = setInterval(function(){
+					span.style.opacity -= 0.1;
+					if(span.style.opacity<0){
+						clearInterval(fade_interval);
 					}
-				}
+				},100);
+			}
+			span.onmouseout = function(){
+				clearInterval(fade_interval);
+				span.style.opacity = 1;
 			}
 		}
 		h2[i].append(span);
@@ -179,7 +177,11 @@ for(let i=0;i<h1s.length;i++){
 	h1.textContent="";
 	for(let j=0;j<text.length;j++){
 		let div = document.createElement("div");
-		div.textContent = text.charAt(j);
+		let char = text.charAt(j);
+		if(char == "o"){
+			char = rndO();
+		}
+		div.textContent = char;
 		div.style.color = "white";
 		div.style.background = rndColor();
 		div.style["font-size"] = "2em";
@@ -199,9 +201,45 @@ for(let i=0;i<h1s.length;i++){
 	}
 }
 
+function rndO(){
+	let ooo = ["○","◌","◍","◎","●","◐","◐","◒","◓","◔","◕","◯","◴","◵","◶","◷"];
+	let index = Math.floor(Math.random()*ooo.length);
+	return ooo[index];
+}
 
+let hwlinks = document.querySelectorAll(".hwlink");
+for(let i=0;i<hwlinks.length;i++){
+	let hwlink = hwlinks[i];
+	let a = document.createElement("a");
+	a.textContent = `${hwlink.textContent}`;
+	a.setAttribute("href",`/${hwlink.textContent}`);
+	a.setAttribute("target","_blank");
+	a.style.color="white";
+	a.style["text-decoration"] = "none";
+	hwlink.innerHTML="";
+	hwlink.append(a);
+	hwlink.style.background=rndColor();
+	hwlink.style.padding="5px";
+}
 
+function dots(number){
+	let result = "";
+	for(let i=0;i<number;i++){
+		result+="■";
+	}
+	return result;
+}
 
+let hrs = document.querySelectorAll(".hr");
+for(let i=0;i<hrs.length;i++){
+	let hr = hrs[i];
+	hr.style.height = "10px";
+	hr.style.width = "100%";
+	hr.style.color = "white";
+	hr.style["text-align"] = "center";
+	hr.style["font-size"] = "0.1em";
+	hr.textContent = dots(60);
+}
 
 
 
