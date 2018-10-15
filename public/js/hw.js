@@ -213,7 +213,6 @@ for(let i=0;i<hwlinks.length;i++){
 	let a = document.createElement("a");
 	a.textContent = `${hwlink.textContent}`;
 	a.setAttribute("href",`/${hwlink.textContent}`);
-	a.setAttribute("target","_blank");
 	a.style.color="white";
 	a.style["text-decoration"] = "none";
 	hwlink.innerHTML="";

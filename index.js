@@ -38,6 +38,10 @@ app.get('/syllabus', function(req, res){
   res.render('syllabus');
 });
 
+app.get('/works', function(req, res){
+  res.render('works');
+});
+
 app.get(/hw\d+$/, function(req, res){
 	let largestHWid = 3;
 	let hwid = Number.parseInt(req.originalUrl.match(/\d+/)[0]);
