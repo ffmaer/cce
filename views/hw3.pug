@@ -15,13 +15,15 @@ block content
 	p position(), style()
 
 	h2 Exercise 2: Interaction
-	h3 Keyboard
+	h3 Keyboard and Mouse
 	p Use p5.play library. Here is  
 		a(href="/p5/play" target="_blank") an example.
 	p Use the following functions:
 	p createSprite()
 	p somesprite.draw = function(){};
-	p keydown()
+	p keyDown()
+	p somesprite.onMousePressed = function(){};
+	p somesprite.onMouseReleased = function(){};
 	p position.x, position.y
 	p overlap(), collide(), displace()
 	p random()
