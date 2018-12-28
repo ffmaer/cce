@@ -52,6 +52,10 @@ app.get(/hw\d+$/, function(req, res){
 	}
 });
 
+app.get('/lessons', function(req, res){
+  res.render(`lessons`);
+});
+
 app.get('/words300', function(req, res){
 
 	function newWord(){
