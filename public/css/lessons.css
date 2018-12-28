@@ -21,3 +21,6 @@ body {
 #content .author {
   font-size: 0.6em;
 }
+#content{
+  margin: auto;
+}
