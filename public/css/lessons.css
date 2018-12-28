@@ -24,3 +24,22 @@ body {
 #content{
   margin: auto;
 }
+img.example{
+  width: 160px;
+}
+td.center{
+  text-align: center;
+}
+table.examples td{
+  border: 2px dotted rgb(255, 0, 229);
+  color: rgb(255, 0, 229);
+}
+table.examples td a{
+  text-decoration: none;
+  color: rgb(255, 0, 229);
+}
+div.char{
+  font-size: 42px;
+  vertical-align: middle;
+  height: 70px;
+}

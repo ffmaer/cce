@@ -61,38 +61,6 @@ for(let i=0;i<folds.length;i++){
 	p.innerHTML = `<a href="javascript:void(0);">${p.textContent}</a>`;
 }
 
-let links = document.querySelectorAll("a");
-let wiggle_interval_id;
-for(let i=0;i<links.length;i++){
-	let link = links[i];
-	link.style["text-decoration"] = "none";
-	link.style.color = rndColor();
-	let text = link.textContent;
-	link.innerHTML = "";
-	for(let j=0;j<text.length;j++){
-		let char=text.charAt(j);
-		let span = document.createElement("span");
-		span.textContent = char;
-		link.append(span);
-	}
-
-	link.onmouseover = function(){
-		clearInterval(wiggle_interval_id);
-		wiggle_interval_id = setInterval(function(){
-			let spans = link.querySelectorAll("span");
-			for(let j=0;j<spans.length;j++){
-				let span = spans[j];
-				span.style["font-size"] = `${Math.floor(Math.random()*20+10)/10}em`;
-			}
-				
-		},100);
-	}
-
-	link.onmouseout = function(){
-		clearInterval(wiggle_interval_id);
-	}
-}
-
 let h3s = document.querySelectorAll("h3");
 for(let i=0;i<h3s.length;i++){
 	let h3=h3s[i];
@@ -120,7 +88,6 @@ for(let i=0;i<h1s.length;i++){
 		div.textContent = char;
 		div.style.color = "white";
 		div.style.background = rndColor();
-		div.style["font-size"] = "2em";
 		div.classList.add("char");
 		h1.append(div);
 	}

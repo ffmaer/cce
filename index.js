@@ -27,7 +27,7 @@ app.use(stylus.middleware(
 app.use(express.static(__dirname + '/public'))
 
 app.get('/', function(req, res){
-  res.render('index');
+  res.render('lessons');
 });
 
 app.get('/resources', function(req, res){
@@ -50,10 +50,6 @@ app.get(/hw\d+$/, function(req, res){
 	}else{
 		res.send("hw not found");
 	}
-});
-
-app.get('/lessons', function(req, res){
-  res.render(`lessons`);
 });
 
 app.get('/words300', function(req, res){
