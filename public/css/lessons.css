@@ -39,7 +39,20 @@ table.examples td a{
   color: rgb(255, 0, 229);
 }
 div.char{
-  font-size: 42px;
+  font-size: 39px;
   vertical-align: middle;
   height: 70px;
+}
+
+.examples img{
+  max-width: 160px;
+  max-height: 160px;
+}
+
+.examples {
+  width: 100%;
+}
+
+.examples tr td:first-child{
+  width: 160px;
 }
